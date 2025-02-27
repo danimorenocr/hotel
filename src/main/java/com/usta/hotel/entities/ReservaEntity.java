@@ -55,7 +55,7 @@ public class ReservaEntity implements Serializable {
 
     //Conexion tabla de rompimiento reserva - habitacion
     //NO SE UTILIZA @NOTNULL PQ NO SE VA A GENERAR CAMPOS SINO LA TABLA DE ROMPIMIENTO
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 
     //Nombre de la tabla de rompimiento y conecctarlas a las otras tablas
     @JoinTable(name = "reservas_hab",
