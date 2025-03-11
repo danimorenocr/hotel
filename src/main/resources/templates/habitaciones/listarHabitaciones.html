@@ -3,12 +3,35 @@
 <head th:replace="~{layout/layout :: head}">
 
 </head>
-<body class="bg-amber-900 text-white flex flex-col justify-center items-center
-h-screen w-screen">
+<body class="bg-stone-900 text-stone-100 flex flex-col justify-center items-center
+min-h-screen w-screen">
+
 <div th:replace="~{layout/layout :: fondo}"></div>
+
 <header th:replace="~{layout/layout :: header}"></header>
-<section class="w-screen h-screen flex flex-col justify-center items-center gap-y-4 p-4 text-amber-200 pt-32">
-    <h1 class="text-3xl font-bold uppercase mb-6"> [[${title}]]</h1>
+<section class="w-screen min-h-screen flex flex-col justify-center items-center gap-y-4 p-4 text-yellow-100 pt-32">
+    <h1 class="text-3xl font-bold font-['Poppins'] uppercase text-yellow-100 mb-6"> [[${title}]]</h1>
+
+    <section class="w-full max-w-7xl grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all"
+             th:each="habitacion: ${habitaciones}">
+            <img th:src="@{${habitacion.fotoHab}}" alt="Imagen de la habitacion"
+                 class="w-full h-56 object-cover">
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold text-stone-800">[[${habitacion.tipoHab}]]</h2>
+                <p class="text-sm text-gray-500 ">
+                    Capacidad:
+                    <span th:if="${habitacion.capacidad == 1}">1 persona</span>
+                    <span th:unless="${habitacion.capacidad == 1}">[[${habitacion.capacidad}]] personas</span>
+                </p>
+                <p class="text-lg font-bold text-amber-700 mt-2">
+                    Precio: $[[${habitacion.precioHab}]]
+                </p>
+            </div>
+        </div>
+    </section>
+
 </section>
+
 </body>
 </html>
