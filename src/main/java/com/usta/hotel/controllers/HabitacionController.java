@@ -17,7 +17,7 @@ public class HabitacionController {
 
     @GetMapping(value = "/habitacion")
     public String listarHab(Model model) {
-        model.addAttribute("title", "Listado de Habitaciones");
+        model.addAttribute("title", "Room list");
         model.addAttribute("urlRegistro", "/crearHabitacion");
         List<HabitacionEntity> lista = habitacionService.findAll();
         model.addAttribute("habitaciones", lista);

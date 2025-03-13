@@ -18,20 +18,63 @@ min-h-screen w-screen">
             <img th:src="@{${habitacion.fotoHab}}" alt="Imagen de la habitacion"
                  class="w-full h-56 object-cover">
             <div class="p-6">
+                <p class="text-lg font-bold text-stone-600 py-1 flex justify-center text-center">
+                    Room Number: [[${habitacion.idHabitacion}]]
+                </p>
                 <h2 class="text-2xl font-semibold text-stone-800">[[${habitacion.tipoHab}]]</h2>
                 <p class="text-sm text-gray-500 ">
-                    Capacidad:
-                    <span th:if="${habitacion.capacidad == 1}">1 persona</span>
-                    <span th:unless="${habitacion.capacidad == 1}">[[${habitacion.capacidad}]] personas</span>
+                    Capacity:
+                    <span th:if="${habitacion.capacidad == 1}">1 person</span>
+                    <span th:unless="${habitacion.capacidad == 1}">[[${habitacion.capacidad}]] people</span>
                 </p>
                 <p class="text-lg font-bold text-amber-700 mt-2">
-                    Precio: $[[${habitacion.precioHab}]]
+                    Price: $[[${habitacion.precioHab}]]
                 </p>
+                <div class="mt-3">
+                    <span th:if="${habitacion.disponibilidad}" class="text-green-600 font-medium">Available</span>
+                    <span th:unless="${habitacion.disponibilidad}" class="text-red-600 font-medium">Not Available</span>
+                </div>
+                <div class="mt-4 flex gap-2">
+                    <a th:href="@{/editarHabitacion/}+${habitacion.idHabitacion}"
+                       class="flex-1 bg-amber-700 text-white text-center py-2 rounded-lg hover:bg-amber-500 transition all">
+                        Edit
+                    </a>
+                    <form th:action="@{/eliminarHab/{id}(id=${habitacion.idHabitacion})}" method="post"
+                          onsubmit="return confirmarEliminacion(event, this);">
+                        <button type="submit" class="bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all">
+                            Delete
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
 </section>
 
+<footer class="mt-10" th:replace="~{layout/layout :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmarEliminacion(event, form){
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text:"This action cannot be undone",
+            icon:"warning",
+            showCancelButton:true,
+            confirmButtonColor:"#991b1b",
+            cancelButtonColor: "#f59e0b",
+            confirmButtonText:"Yes, delete",
+            cancelButtonText: "Cancel"
+
+        }).then((result)=>{
+            if (result.isConfirmed){
+                console.log("Deleting...");
+                form.requestSubmit();
+            }
+        });
+    }
+</script>
 </body>
 </html>
