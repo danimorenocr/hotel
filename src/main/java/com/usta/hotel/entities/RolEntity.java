@@ -7,11 +7,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+//GENERA GETTERS AND SETTERS
 @Data
+//INDICA Q ES UNA ENTIDAD
 @Entity
+//NOMBRE DE LA TABLA
 @Table(name = "ROLES")
 
 public class RolEntity implements Serializable {
+    // CREA EL NUMERO DEL ID
     private static final long serialVersionUID = 1L;
 
     @Id

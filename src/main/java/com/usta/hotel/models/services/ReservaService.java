@@ -18,4 +18,6 @@ public interface ReservaService {
     public ReservaEntity actualizar(ReservaEntity reserva);
 
     public ReservaEntity viewDetail(Long id);
+
+    public List<ReservaEntity> findByHabitacion(HabitacionEntity habitacion);
 }

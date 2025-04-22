@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body class="bg-stone-800 min-h-screen flex flex-col mb-22"
+      th:style="'background-image: url('+@{/images/hotel1.jpg}+');background-size: cover;
+      background-position: center; backdrop-filter:blur(1px)'">
+
+<header th:replace="~{layout/layout :: header}"></header>
+<section class="bg-stone-300 text-stone-900 py-8 mt-20">
+    <section class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold font-serif text-slate-700 mb-6">Luxury Hotel</h1>
+        <p class="mt-4 text-lg max-w-3xl mx-auto">
+            Enjoy an unforgettable stay at our 5-start hotel,
+            where exclusive services and total comfort await for you.</p>
+
+        <div class="mt-6 mb-10 max-w-6xl mx-auto">
+            <!--            // Swiper: Clase para carruseles-->
+            <div class="swiper mySwiper rounded-xl shadow-lg">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide ">
+                        <img src="/images/frenteHotel.jpg" alt="Hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide ">
+                        <img src="/images/psicinaHotel.jpg" alt="Hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide ">
+                        <img src="/images/hallHotel.jpg" alt="Hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide ">
+                        <img src="/images/hotel.jpg" alt="Hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                </div>
+                <!--                navegacion-->
+                <div class="swiper-button-prev flex items-center justify-center w-10 h-10 rounded-full border border-amber-600
+                    hover:bg-amber-600 text-amber-600 hover:text-white text-xl font-bold shadow transition-all">
+                </div>
+                <div class="swiper-button-next flex items-center justify-center w-10 h-10 rounded-full border border-amber-600
+                    hover:bg-amber-600 text-amber-600  hover:text-white text-xl font-bold shadow transition-all">
+                </div>
+                <div class="swiper-pagination mt-30 flex justify-center "></div>
+            </div>
+        </div>
+    </section>
+    <div class="h-1 bg-slate-800 shadow-md rounded-full my-10 w-3/4 mx-auto"></div>
+<!--    ubiacacion contactos y horario clave-->
+    <section class="py-4 px-6 md:px-20">
+        <div>
+            <h2 class="text-2xl font-bold mb-4 text-stone-800">Location & Contact</h2>
+            <div class="space-y-2 text-stone-800">
+                <p><strong>Adress:</strong> Carrera 13 #85-46, Bogotá, Cundinamarca</p>
+                <p><strong>Phone: +57</strong> 3112976228</p>
+                <p><strong>Email: </strong> luxuryhotels@gmail.com</p>
+                <p class="mt-2 flex gap-4 text-2xl">
+                    <a href="#" class="text-blue-600 hover:text-blue-800"> <i class="fab fa-facebook-square"></i></a>
+                    <a href="#" class="text-pink-500 hover:text-pink-600"> <i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/573112608579" class="text-green-500 hover:text-green-600"> <i class="fab fa-whatsapp"></i></a>
+                </p>
+            </div>
+        </div>
+    </section>
+</section>
+
+</body>
+<script>
+    const swiper=new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation:{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        breakpoints:{
+            768: {slidesPerView:2,},
+            1024:{slidesPerView: 3,}
+        },
+
+    });
+</script>
+</html>

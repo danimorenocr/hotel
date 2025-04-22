@@ -51,4 +51,11 @@ public class ReservaServiceImplement implements ReservaService {
     public ReservaEntity viewDetail(Long id) {
         return reservaDAO.viewDetail(id);
     }
+
+    @Override
+    @Transactional
+    public List<ReservaEntity> findByHabitacion(HabitacionEntity habitacion) {
+        return reservaDAO.findByHabitacion(habitacion);
+    }
+
 }
